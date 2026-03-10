@@ -14,3 +14,4 @@ spec:
     backendRefs:
     - name: post-service
       port: 8081
+      kind: Service

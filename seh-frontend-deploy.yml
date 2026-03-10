@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: ghcr.io/linuxserver/webtop:latest
+        image: ghcr.io/linuxserver/webtop:latest # your “frontend” is your application’s container image, which the Deployment runs in pods.
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8082

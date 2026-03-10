@@ -14,3 +14,4 @@ spec:
     backendRefs:
     - name: user-service
       port: 8082
+      kind: Service
