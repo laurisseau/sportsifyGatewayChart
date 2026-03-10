@@ -8,6 +8,6 @@ spec:
   selector:
     type: seh-frontend
   ports:
-    - protocol: TCP
+    - protocol: http
       port: 8082
       targetPort: 8082
