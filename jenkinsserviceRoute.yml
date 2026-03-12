@@ -2,7 +2,7 @@ apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
   name: jenkins-route
-  namespace: sportsify-ns            # HTTPRoute lives in Jenkins namespace
+  namespace: jenkins            # HTTPRoute lives in Jenkins namespace
 spec:
   parentRefs:
   - name: sportsify-gateway
