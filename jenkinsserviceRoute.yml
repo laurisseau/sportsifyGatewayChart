@@ -18,3 +18,6 @@ spec:
       namespace: jenkins         # points to Jenkins service namespace
       port: 8080
       kind: Service
+
+
+# https://oneuptime.com/blog/post/2026-02-24-how-to-set-up-cross-namespace-routing-with-gateway-api/view
