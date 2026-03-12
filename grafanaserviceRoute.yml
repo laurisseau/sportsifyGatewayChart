@@ -2,19 +2,19 @@ apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
   name: grafana-route
-  namespace: monitoring            # HTTPRoute lives in Grafana namespace
+  namespace: monitoring
 spec:
   parentRefs:
-  - name: sportsify-gateway
-    namespace: sportsify-ns
-    sectionName: http
+    - name: sportsify-gateway
+      namespace: sportsify-ns
+      sectionName: http
   rules:
-  - matches:
-    - path:
-        type: PathPrefix
-        value: /grafana
-    backendRefs:
-    - name: monitoring
-      namespace: monitoring        # points to Grafana service namespace
-      port: 80
-      kind: Service
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /grafana
+      backendRefs:
+        - name: kube-prometheus-stack-grafana
+          namespace: monitoring
+          port: 80
+          kind: Service
