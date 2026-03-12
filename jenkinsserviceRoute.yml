@@ -2,11 +2,11 @@ apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
   name: jenkins-route
-  namespace: jenkins
+  namespace: jenkins            # HTTPRoute lives in Jenkins namespace
 spec:
   parentRefs:
   - name: sportsify-gateway
-    namespace: envoy-gateway-system
+    namespace: sportsify-ns     # MUST match the Gateway namespace
   rules:
   - matches:
     - path:
@@ -14,6 +14,6 @@ spec:
         value: /jenkins
     backendRefs:
     - name: jenkins
-      namespace: jenkins
+      namespace: jenkins         # points to Jenkins service namespace
       port: 8080
       kind: Service
