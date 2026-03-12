@@ -7,6 +7,7 @@ spec:
   parentRefs:
   - name: sportsify-gateway
     namespace: sportsify-ns     # MUST match the Gateway namespace
+    sectionName: http           # points to the listener on the Gateway
   rules:
   - matches:
     - path:
