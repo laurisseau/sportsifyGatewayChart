@@ -1,0 +1,20 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: grafana-route
+  namespace: grafana            # HTTPRoute lives in Grafana namespace
+spec:
+  parentRefs:
+  - name: sportsify-gateway
+    namespace: sportsify-ns
+    sectionName: http
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /grafana
+    backendRefs:
+    - name: grafana
+      namespace: grafana         # points to Grafana service namespace
+      port: 80
+      kind: Service
