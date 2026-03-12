@@ -5,7 +5,7 @@ metadata:
   namespace: monitoring
 spec:
   parentRefs:
-    - name: sportsify-gateway
+    - name: sportsify-gateway       # Your Envoy Gateway name
       namespace: sportsify-ns
       sectionName: http
   rules:
@@ -13,8 +13,18 @@ spec:
         - path:
             type: PathPrefix
             value: /grafana
+      filters:
+        # Tell Grafana it's behind /grafana
+        - type: RequestHeaderModifier
+          requestHeaderModifier:
+            set:
+              x-forwarded-prefix: /grafana
+        # Strip /grafana before sending request to the service
+        - type: RequestRedirect
+          requestRedirect:
+            strip_path_prefix: /grafana
       backendRefs:
-        - name: kube-prometheus-stack-grafana
+        - name: kube-prometheus-stack-grafana  # Grafana service name
           namespace: monitoring
           port: 80
           kind: Service
