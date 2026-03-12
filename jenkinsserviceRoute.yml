@@ -6,6 +6,7 @@ metadata:
 spec:
   parentRefs:
   - name: sportsify-gateway
+    namespace: envoy-gateway-system
   rules:
   - matches:
     - path:
@@ -13,5 +14,6 @@ spec:
         value: /jenkins
     backendRefs:
     - name: jenkins
+      namespace: jenkins
       port: 8080
       kind: Service
